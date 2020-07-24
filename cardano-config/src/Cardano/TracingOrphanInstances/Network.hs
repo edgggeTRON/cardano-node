@@ -403,7 +403,7 @@ instance ( Condense (HeaderHash blk)
       => ToObject (AnyMessage (BlockFetch blk)) where
   toObject MaximalVerbosity (AnyMessage (MsgBlock blk)) =
     mkObject [ "kind" .= String "MsgBlock"
-             , "block hash" .=  (condense $ blockHash blk)
+             , "blockHash" .=  (condense $ blockHash blk)
              , "blockSize" .= toJSON (nodeBlockFetchSize (getHeader blk))
              , "txIds" .= toJSON (presentTx <$> extractTxs blk)
              ]
@@ -413,7 +413,7 @@ instance ( Condense (HeaderHash blk)
 
   toObject _v (AnyMessage (MsgBlock blk)) =
     mkObject [ "kind" .= String "MsgBlock"
-             , "block hash" .=  (condense $ blockHash blk)
+             , "blockHash" .=  (condense $ blockHash blk)
              , "blockSize" .= toJSON (nodeBlockFetchSize (getHeader blk))
              ]
   toObject _v (AnyMessage MsgRequestRange{}) =
