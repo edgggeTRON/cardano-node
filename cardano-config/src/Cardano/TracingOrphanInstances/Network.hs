@@ -405,7 +405,7 @@ instance ( Condense (HeaderHash blk)
     mkObject [ "kind" .= String "MsgBlock"
              , "block hash" .=  (condense $ blockHash blk)
              , "block size" .= toJSON (nodeBlockFetchSize (getHeader blk))
-             , "tx ids" .= toJSON (presentTx <$> extractTxs blk)
+             , "txIds" .= toJSON (presentTx <$> extractTxs blk)
              ]
       where
         presentTx :: GenTx blk -> Value
